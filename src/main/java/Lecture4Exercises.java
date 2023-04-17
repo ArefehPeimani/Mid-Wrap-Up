@@ -5,7 +5,10 @@ public class Lecture4Exercises {
      *   lecture 4 page 15
      */
     public long factorial(int n) {
-        return 0L;
+        if (n == 0) {
+            return 1;
+        }
+        return n * factorial(n-1);
     }
 
     /*
@@ -14,7 +17,10 @@ public class Lecture4Exercises {
      *   lecture 4 page 19
      */
     public long fibonacci(int n) {
-        return 0;
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
     /*
@@ -22,7 +28,11 @@ public class Lecture4Exercises {
      *   lecture 4 page 19
      */
     public String reverse(String word) {
-        return null;
+        String res = "";
+        for (int i = word.length()-1; i >= 0; i--) {
+            res += word.charAt(i);
+        }
+        return res;
     }
 
     /*
@@ -32,7 +42,13 @@ public class Lecture4Exercises {
      *   lecture 4 page 19
      */
     public boolean isPalindrome(String line) {
-        return false;
+        line = line.toLowerCase();
+        if (reverse(line).equals(line)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /*
@@ -47,6 +63,19 @@ public class Lecture4Exercises {
      *   lecture 4 page 26
      */
     public char[][] dotPlot(String str1, String str2) {
-        return null;
+        int n = str1.length();
+        int m = str2.length();
+        char[][] dot = new char[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (str1.charAt(i) == str2.charAt(j)) {
+                    dot[i][j] = '*';
+                }
+                else {
+                    dot[i][j] = ' ';
+                }
+            }
+        }
+        return dot;
     }
 }
