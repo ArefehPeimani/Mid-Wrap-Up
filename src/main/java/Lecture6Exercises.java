@@ -37,7 +37,7 @@ public class Lecture6Exercises {
      */
     public double[][] matrixProduct(double[][] m1, double[][] m2) throws RuntimeException {
         if (m2.length != m1[0].length) {
-            throw new RuntimeException();
+            throw new RuntimeException("Dimensions don't match");
         }
         double[][] prod = new double[m1.length][m2[0].length];
         for (int i = 0; i < m1.length; i++) {
