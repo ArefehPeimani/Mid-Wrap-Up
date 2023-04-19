@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Lecture6Exercises {
@@ -8,7 +10,11 @@ public class Lecture6Exercises {
      *   lecture 6 page  16
      */
     public long calculateEvenSum(int[] arr) {
-        return 0L;
+        long res = 0;
+        for (int i = 0; i < arr.length; i += 2) {
+            res += arr[i];
+        }
+        return res;
     }
 
     /*
@@ -17,7 +23,12 @@ public class Lecture6Exercises {
      *   lecture 6 page 16
      */
     public int[] reverseArray(int[] arr) {
-        return null;
+        int n = arr.length;
+        int[] reversed = new int[n];
+        for (int i = 0; i < n; i++) {
+            reversed[n-i-1] = arr[i];
+        }
+        return reversed;
     }
 
     /*
@@ -25,7 +36,17 @@ public class Lecture6Exercises {
      *   lecture 6 page 21
      */
     public double[][] matrixProduct(double[][] m1, double[][] m2) throws RuntimeException {
-        return null;
+        if (m2.length != m1[0].length) {
+            throw new RuntimeException();
+        }
+        double[][] prod = new double[m1.length][m2[0].length];
+        for (int i = 0; i < m1.length; i++) {
+            for (int j = 0; j < m2[0].length; j++) {
+                for (int k = 0; k < m2.length; k++)
+                    prod[i][j] += m1[i][k] * m2[k][j];
+            }
+        }
+        return prod;
     }
 
     /*
@@ -34,7 +55,11 @@ public class Lecture6Exercises {
      *   lecture 6 page 30
      */
     public List<List<String>> arrayToList(String[][] names) {
-        return null;
+        List<List<String>> list = new ArrayList<>();
+        for (int i = 0; i < names.length; i++) {
+            list.add(Arrays.asList(names[i]));
+        }
+        return list;
     }
 
     /*
@@ -43,7 +68,24 @@ public class Lecture6Exercises {
      *   lecture 6 page 30
      */
     public List<Integer> primeFactors(int n) {
-        return null;
+        List<Integer> factors = new ArrayList<>();
+        for (int i = 2; i <= n; i++) {
+            if (n % i == 0) {
+                if (isPrime(i)) {
+                    factors.add(i);
+                }
+            }
+        }
+        return factors;
+    }
+
+    private boolean isPrime(int n){
+        for(int i = 2; i < n ;i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+        return true;
     }
 
     /*
@@ -51,6 +93,6 @@ public class Lecture6Exercises {
      *   lecture 6 page 30
      */
     public List<String> extractWord(String line) {
-        return null;
+        return Arrays.asList(line.split("[^a-zA-Z]+"));
     }
 }
